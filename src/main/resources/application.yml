@@ -16,13 +16,17 @@ server:
 
 # 面向eureka服务的路由配置
 zuul:
+  #zuul 注册到eureka 时会自动创建映射 通过此参数禁用不需要暴露的服务
+#  ignored-patterns:
+#    /**
   routes:
     eureka-url:
       path: /eureka/**
       serviceId: eureka-client
-    feign-url:
-      path: /feign/**
-      serviceId: feign-consumer
+    # 更简洁的配置方式
+    feign-consumer: /feign/**
+
+    
 
 eureka:
   client:
